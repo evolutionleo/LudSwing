@@ -7,20 +7,21 @@ function PlayerStateRope() {
 	
 	// if we start swinging from top - swap right and left
 	if (rope_reverse_rot == 0 and dir.x != 0) {
-		if (0 < rope_angle and rope_angle < 180)
+		if (35 < rope_angle and rope_angle < 150)
 			rope_reverse_rot = -1
 		else
 			rope_reverse_rot = 1
 	}
 	
-	if (dir.x == 0)
+	//if (dir.x == 0)
+	if (!kright and !kleft)
 		rope_reverse_rot = 0
 	
 	var rope_angle_acc = -0.2 * dcos(rope_angle)
 	rope_angle_acc += dir.x * 0.08 * rope_reverse_rot
 	rope_angle_acc /= sqrt(max(0, rope_length) / 256)
-	rope_length += dir.y * 8
-	rope_length = clamp(0, rope_length, rope_max_length)
+	rope_length += dir.y * 5
+	rope_length = clamp(1, rope_length, rope_max_length)
 	
 	rope_angle_spd += rope_angle_acc
 	rope_angle += rope_angle_spd
@@ -31,6 +32,11 @@ function PlayerStateRope() {
 	
 	spd.x = target_x - x
 	spd.y = target_y - y
+	
+	
+	if (place_meeting(x + spd.x, y + spd.y, oWall)) {
+		rope_angle_spd *= .9
+	}
 	
 	
 	if (kjump) {

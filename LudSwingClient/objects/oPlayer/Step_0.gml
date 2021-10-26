@@ -17,6 +17,18 @@ kjump_hold = keyboard_check(vk_space)
 
 krope = mouse_check_button_pressed(mb_left)
 krope_hold = mouse_check_button(mb_left)
+
+krest = keyboard_check(ord("R"))
+
+
+if (krest) {
+	rest_timer++
+	if rest_timer >= max_rest_timer
+		respawn()
+}
+else {
+	rest_timer = 0
+}
 }
 else {
 //kup = false

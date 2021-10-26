@@ -1,12 +1,13 @@
 #macro from  ,
 
 
-global.modules = new Array()
-
-
 function Module(contents) constructor {
 	self.__imported = new Array()
 	InheritAllVariables(contents, self)
+	
+	
+	if !variable_global_exists("modules")
+		global.modules = new Array()
 	
 	global.modules.push(self)
 }

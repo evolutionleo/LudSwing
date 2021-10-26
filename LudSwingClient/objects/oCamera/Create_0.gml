@@ -11,6 +11,8 @@ interpolation = 1/20
 fast_interpolation = 1/10
 ultrafast_interpolation = 1/5
 
+interp = interpolation
+
 
 player = noone
 

@@ -22,6 +22,11 @@ kjump_hold = false
 krope = false
 krope_hold = false
 
+krest = false
+
+rest_timer = 0
+max_rest_timer = 12
+
 #endregion
 #region Physics
 
@@ -100,7 +105,8 @@ function rope_shoot() {
 	var mdir = point_direction(x, y, mouse_x, mouse_y)
 	var dx = lengthdir_x(64, mdir)
 	var dy = lengthdir_y(64, mdir)
-	var randir = mdir + random_range(-10, 10)
+	//var randir = mdir + random_range(10, 10)
+	var randir = mdir // whatever it's a bad mechanic
 	rope_hook = instance_create_layer(x + dx, y + dy, "Bullets", oRopeHook)
 	rope_hook.image_angle = randir
 	rope_hook.owner = id
@@ -109,7 +115,15 @@ function rope_shoot() {
 }
 
 function respawn() {
-	
+	//x = xstart
+	//y = ystart
+	//spd.x = 0
+	//spd.y = 0
+	room_restart()
+}
+
+function knock() {
+	state = PlayerStateKnocked
 }
 
 #endregion

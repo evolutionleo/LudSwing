@@ -1,7 +1,7 @@
 /// @desc
 
 initialized = false
-
+visible = false
 
 init = function() {
 	node = new PathNode(x, y)
