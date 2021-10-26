@@ -1,0 +1,1 @@
+last_fps = new RandomArray(120, [fps_real])
